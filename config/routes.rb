@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resource :groups do
-    resource :posts
-    resource :group_users
+  resources :groups do
+    resources :posts
+    resources :group_users
   end
+
+  resources :users, only: [ :index, :show ]
 end

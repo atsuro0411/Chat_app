@@ -1,4 +1,4 @@
 <%= link_to "ログアウト",  destroy_user_session_path, data: { turbo_method: :delete}  %>
 <% @users.each do |user|%>
-  <%= user.name %>
+  <%= link_to user.name, groups_path(current_user_id: current_user.id, user_id: user.id), data: { turbo_method: :post } %>
 <% end %>

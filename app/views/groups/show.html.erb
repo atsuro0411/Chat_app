@@ -1,1 +1,8 @@
-
+<% @posts.each do |post| %>
+  <%= post.content %>
+  <%= post.user.name %>
+<% end %>
+<%= form_with(model: [@group, @post]) do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit "送信" %>
+<% end %>

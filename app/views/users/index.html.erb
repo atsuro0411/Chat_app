@@ -2,3 +2,4 @@
 <% @users.each do |user|%>
   <%= link_to user.name, groups_path(current_user_id: current_user.id, user_id: user.id), data: { turbo_method: :post } %>
 <% end %>
+<%= link_to "グループ作成", new_group_path%>

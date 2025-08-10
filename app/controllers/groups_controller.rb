@@ -14,12 +14,12 @@ class GroupsController < ApplicationController
     selected_ids = []
     selected_ids += Array(params[:user_ids]).map(&:to_i)
     selected_ids << params[:user_id].to_i if params[:user_id].present?
-    
+
     if selected_ids.blank?
       redirect_to new_group_path, alert: "メンバーを選択してください"
       return
     end
-      user_ids = (selected_ids + [current_user.id]).uniq
+      user_ids = (selected_ids + [ current_user.id ]).uniq
       group_users = GroupUser.where(user_id: user_ids)
       grouped =group_users.group_by { |group_user| group_user.group_id }
       group_id = grouped.find { |group_id, users|users.map(&:user_id).uniq.sort == user_ids.sort }&.first

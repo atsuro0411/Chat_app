@@ -20,16 +20,16 @@ class GroupsController < ApplicationController
     end
 
       user_ids = (selected_ids + [ current_user.id ]).uniq.sort
-      
+
       group_id = Group
         .joins(:group_users)
-        .group('groups.id')
+        .group("groups.id")
         .having(
-          'COUNT(DISTINCT group_users.user_id) = ? AND ' \
-          'COUNT(DISTINCT CASE WHEN group_users.user_id IN (?) THEN group_users.user_id END) = ?',
+          "COUNT(DISTINCT group_users.user_id) = ? AND " \
+          "COUNT(DISTINCT CASE WHEN group_users.user_id IN (?) THEN group_users.user_id END) = ?",
           user_ids.size, user_ids, user_ids.size
         )
-        .pluck('groups.id')
+        .pluck("groups.id")
         .first
 
     if group_id.present?

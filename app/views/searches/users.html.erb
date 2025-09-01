@@ -1,0 +1,17 @@
+<h1>ユーザー検索</h1>
+<%= form_with url: search_users_path, method: :get, local: true do |f| %>
+  <%= f.text_field :q, value: @q, placeholder: "名前で検索" %>
+  <%= f.submit "検索" %>
+<% end %>
+
+
+<% if @users.present? %>
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= user.name %></li>
+      <%= friendship_action_buttons(user) %> 
+    <% end %>
+  </ul>
+<% elsif params[:q].present? %>
+  <p>該当ユーザーがいません。</p>
+<% end %>

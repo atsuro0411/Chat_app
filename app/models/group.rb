@@ -5,12 +5,12 @@ class Group < ApplicationRecord
   has_many :posts
 
 
-  def Group.build_user_ids(selected_ids, current_user_id)
+  def self.build_user_ids(selected_ids, current_user_id)
     (Array(selected_ids).map(&:to_i) + [ current_user_id ]).uniq.sort
   end
 
 
-  def Group.id_for_exact_members(user_ids)
+  def self.id_for_exact_members(user_ids)
     ids = Array(user_ids).map(&:to_i).uniq.sort
     return nil if ids.blank?
 
@@ -23,25 +23,5 @@ class Group < ApplicationRecord
         ids.size, ids, ids.size
       )
       .pick("groups.id")
-  end
-
-  def update_default_name(user_ids: nil)
-    return if name.present?
-
-    names =
-      if user_ids
-        User.where(id: user_ids).pluck(:name)
-      else
-        users.reload.pluck(:name)
-      end
-
-    new_name =
-      if names.size <= 2
-        names.join("、")
-      else
-        "#{names.first(2).join("、")}..."
-      end
-
-    update!(name: new_name)
   end
 end

@@ -21,5 +21,15 @@ Rails.application.routes.draw do
     resources :group_users
   end
 
+  resources :friendships, only: [ :index, :create, :destroy ] do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
+
   resources :users, only: [ :index, :show ]
+
+  get "/search/users",   to: "searches#users",   as: :search_users
+  get "/search/friends", to: "searches#friends", as: :search_friends
 end

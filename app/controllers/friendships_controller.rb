@@ -4,10 +4,13 @@ class FriendshipsController < ApplicationController
 
   def create
     addressee_id = params[:addressee_id].to_i
+    if Block.connecting_block(current_user.id, addressee_id).exists?
+      return redirect_back fallback_location: friendships_path, alert: "ブロック中のため申請できません"
+    end
     return redirect_back fallback_location: search_users_path, alert: "宛先が不正です" if addressee_id.zero?
     return redirect_back fallback_location: search_users_path, alert: "自分自身には申請できません" if addressee_id == current_user.id
 
-    existing = Friendship.between(current_user.id, addressee_id).first
+    existing = Friendship.connecting(current_user.id, addressee_id).first
 
     if existing
       case existing.status

@@ -4,7 +4,6 @@
   <%= f.submit "検索" %>
 <% end %>
 
-
 <% if @users.present? %>
   <ul>
     <% @users.each do |user| %>
@@ -15,3 +14,7 @@
 <% elsif params[:q].present? %>
   <p>該当ユーザーがいません。</p>
 <% end %>
+
+<p>
+  <%= link_to "フレンド内検索へ", search_friends_path %>
+</p>

@@ -1,0 +1,14 @@
+<h1>ブロック中のユーザー</h1>
+
+<% if @blocked_users.any? %>
+  <ul>
+    <% @blocked_users.each do |u| %>
+      <li>
+        <%= u.name %>
+        <%= button_to "ブロック解除", unblock_path(user_id: u.id), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>ブロック中のユーザーはいません。</p>
+<% end %>

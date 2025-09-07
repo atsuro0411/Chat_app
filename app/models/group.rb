@@ -5,10 +5,6 @@ class Group < ApplicationRecord
   has_many :posts
 
 
-  def self.build_user_ids(selected_ids, current_user_id)
-    (Array(selected_ids).map(&:to_i) + [ current_user_id ]).uniq.sort
-  end
-
 
   def self.id_for_exact_members(user_ids)
     ids = Array(user_ids).map(&:to_i).uniq.sort

@@ -21,7 +21,7 @@ class SearchesController < ApplicationController
     if @q.present?
       base.merge(User.search_by_name(@q)).order(:name)
     else
-      base.order(:name)  
+      base.order(:name)
     end
 end
 end

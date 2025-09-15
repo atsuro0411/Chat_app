@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :friends, only: [:index]
+  resources :friends, only: [ :index ]
 
   resources :blocks, only: [ :index, :create ]
   delete "/blocks/:user_id", to: "blocks#destroy", as: :unblock

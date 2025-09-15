@@ -74,7 +74,7 @@ class User < ApplicationRecord
     ids += blocks_received.pluck(:blocker_id)  if respond_to?(:blocks_received)
     ids.uniq
   end
-  
+
   def blocking?(other)   = blocks_given.exists?(blocked_id: other.id)
   def blocked_by?(other) = blocks_received.exists?(blocker_id: other.id)
   def blocked_with?(other)

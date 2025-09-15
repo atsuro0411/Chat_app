@@ -1,8 +1,27 @@
-<% @posts.each do |post| %>
-  <%= post.content %>
-  <%= post.user.name %>
-<% end %>
-<%= form_with(model: [@group, @post]) do |form| %>
-  <%= form.text_area :content %>
-  <%= form.submit "送信" %>
-<% end %>
+<div class="chat-wrap">
+  <div id="chat-list" class="chat-list">
+    <% @posts.each do |post| %>
+      <% me = (post.user_id == current_user.id) %>
+
+      <div class="message <%= 'me' if me %>">
+           <% unless me %>
+          <div class="sender-name"><%= post.user.name %></div>
+        <% end %>
+
+        <div class="bubble">
+          <%= post.content %>
+          <div class="meta">
+            <time><%= l(post.created_at, format: :hm) %></time>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="chat-form">
+    <%= form_with(model: [@group, @post], local: true, class: "chat-input") do |form| %>
+      <%= form.text_area :content, rows: 2, placeholder: "メッセージを入力…", class: "input" %>
+      <%= form.submit "送信", class: "send-button" %>
+    <% end %>
+  </div>
+</div>

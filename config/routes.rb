@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+
   resources :groups do
     resources :posts
     resources :group_users
@@ -28,10 +29,12 @@ Rails.application.routes.draw do
     end
   end
 
+
+  resources :friends, only: [ :index ]
+
   resources :blocks, only: [ :index, :create ]
   delete "/blocks/:user_id", to: "blocks#destroy", as: :unblock
 
-  resources :users, only: [ :index, :show ]
 
   get "/search/users",   to: "searches#users",   as: :search_users
   get "/search/friends", to: "searches#friends", as: :search_friends

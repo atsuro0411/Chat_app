@@ -5,19 +5,21 @@
   <%= f.submit "検索" %>
 <% end %>
 
-<% if @users.present? %>
+<% if @friends.present? %>
   <ul>
-    <% @users.each do |user| %>
+    <% @friends.each do |user| %>
       <li>
         <%= user.name %>
-        
+        <%= friendship_action_buttons(user, show_chat: true) %>
       </li>
     <% end %>
   </ul>
+<% elsif params[:q].present? %>
+  <p>該当フレンドはいませんでした。</p>
+<% else %>
+  <p>名前を入力して検索してください。</p>
 <% end %>
 
-<p>
-  <%= link_to "全ユーザー検索へ", search_users_path %>
-</p>
-
+<p><%= link_to "全ユーザー検索へ", search_users_path %></p>
+<%= link_to "フレンド一覧へ", friends_path %>
 <%= link_to "ブロック管理", blocks_path %>

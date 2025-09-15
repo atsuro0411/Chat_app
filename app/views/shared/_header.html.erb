@@ -1,0 +1,16 @@
+<header class="app-header">
+  <div class="app-header__inner">
+    <nav class="nav">
+      <% if user_signed_in? %>
+        <%= link_to "フレンド", friends_path %>
+        <%= link_to "申請一覧", friendships_path %>
+        <%= link_to "ユーザー検索", search_users_path %>
+        <%= link_to "ブロック管理", blocks_path %>
+        <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "新規登録", new_user_registration_path %>
+      <% end %>
+    </nav>
+  </div>
+</header>

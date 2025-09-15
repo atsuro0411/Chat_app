@@ -2,6 +2,14 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_friendship!, only: [ :destroy, :accept, :decline ]
 
+
+  def index
+    @friends = current_user
+                 .friends_relation
+                 .where.not(id: current_user.blocked_user_ids)
+                 .order(:name)
+  end
+
   def create
     addressee_id = params[:addressee_id].to_i
     if Block.connecting_block(current_user.id, addressee_id).exists?

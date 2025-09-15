@@ -23,6 +23,8 @@
   </head>
   <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
   <body>
+    <%= render "shared/header" %>
+    <main class="app-main">
     <%= yield %>
   </body>
 </html>

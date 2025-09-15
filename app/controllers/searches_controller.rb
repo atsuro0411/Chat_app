@@ -10,9 +10,18 @@ class SearchesController < ApplicationController
   end
 
   def friends
-    @q = params[:q].to_s
-    blocked_ids = current_user.blocks_given.pluck(:blocked_id) + current_user.blocks_received.pluck(:blocker_id)
-    friend_ids  = current_user.friends.where.not(id: blocked_ids).select(:id)
-    @friends = @q.blank? ? [] : User.where(id: friend_ids).merge(User.search_by_name(@q)).order(:name)
-  end
+  @q = params[:q].to_s.strip
+
+  blocked_ids = (current_user.blocks_given.pluck(:blocked_id) +
+                 current_user.blocks_received.pluck(:blocker_id)).uniq
+
+  base = current_user.friends.where.not(id: blocked_ids)
+
+  @friends =
+    if @q.present?
+      base.merge(User.search_by_name(@q)).order(:name)
+    else
+      base.order(:name)  
+    end
+end
 end

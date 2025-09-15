@@ -1,0 +1,30 @@
+{
+  "name": "chat_app",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build:css": "sass --load-path app/assets/stylesheets app/assets/stylesheets/application.scss app/assets/builds/application.css --style=compressed --source-map --source-map-urls=relative",
+    "build:css:pretty": "sass --load-path app/assets/stylesheets app/assets/stylesheets/application.scss app/assets/builds/application.css --style=expanded --source-map --source-map-urls=relative",
+    "watch:css": "sass --watch --load-path app/assets/stylesheets app/assets/stylesheets/application.scss:app/assets/builds/application.css --style=expanded --source-map --source-map-urls=relative"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atsuro0411/Chat_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/atsuro0411/Chat_app/issues"
+  },
+  "homepage": "https://github.com/atsuro0411/Chat_app#readme",
+  "devDependencies": {
+    "sass": "^1.92.1"
+  }
+}

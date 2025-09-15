@@ -1,0 +1,61 @@
+<h1>フレンド</h1>
+
+<% if @friends.any? %>
+  <ul>
+    <% @friends.each do |user| %>
+      <li>
+        <%= user.name %>
+
+       
+        <%= button_to "DMを開く",
+              groups_path(user_id: user.id),
+              method: :post,
+              form: { style: "display:inline" } %>
+
+        
+        <%= friendship_action_buttons(user) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <hr style="margin: 16px 0;">
+
+  <h2>選択したフレンドでグループ作成</h2>
+  <%= form_with url: groups_path, method: :post, local: true do %>
+    <div style="margin-bottom:8px;">
+      <label>
+        <input type="checkbox" id="select_all_friends">
+        全選択 / 全解除
+      </label>
+    </div>
+
+    <div style="display:grid; gap:6px; margin-bottom:12px;">
+      <% @friends.each do |user| %>
+        <label>
+          <%= check_box_tag 'user_ids[]', user.id, false, id: "friend_#{user.id}" %>
+          <%= user.name %>
+        </label>
+      <% end %>
+    </div>
+
+    <div style="margin-bottom:8px;">
+      <%= text_field_tag :name, nil, placeholder: "（任意）グループ名" %>
+    </div>
+
+    <%= submit_tag "グループを作成する" %>
+  <% end %>
+
+  <script>
+    document.addEventListener("turbo:load", function() {
+      const all = document.getElementById("select_all_friends");
+      if (!all) return;
+      all.addEventListener("change", function() {
+        document.querySelectorAll('input[name="user_ids[]"]').forEach(cb => cb.checked = all.checked);
+      });
+    });
+  </script>
+
+<% else %>
+  <p>フレンドがいません。</p>
+<% end %>
+ <%= link_to "フレンド内検索へ", search_friends_path %>

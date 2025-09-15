@@ -1,0 +1,214 @@
+.chat-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fbfbfb;
+}
+.chat-wrap .chat-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+.chat-wrap .message {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin: 8px 0;
+  max-width: 80%;
+}
+.chat-wrap .message.me {
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+.chat-wrap .message .bubble {
+  padding: 10px 12px;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  word-break: break-word;
+}
+.chat-wrap .message .meta {
+  margin-top: 4px;
+  font-size: 12px;
+  text-align: right;
+}
+.chat-wrap .message .meta .name {
+  font-weight: 600;
+}
+.chat-wrap .message:not(.me) .meta {
+  text-align: left;
+}
+.chat-wrap .chat-form {
+  border-top: 1px solid border;
+  background: #fff;
+  padding: 8px;
+}
+.chat-wrap .chat-form .chat-input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+.chat-wrap .chat-form .chat-input .input {
+  width: 90%;
+  resize: none;
+  padding: 10px;
+  border: 1px solid input-border;
+  border-radius: 10px;
+  background: input-bg;
+}
+.chat-wrap .chat-form .chat-input .send-button {
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background: send;
+  color: #202020;
+  cursor: pointer;
+}
+
+.sessions-new-top {
+  background-color: rgb(240, 240, 240);
+}
+.sessions-new-top .sessions-new {
+  text-align: center;
+  height: 100%;
+  margin-top: 40px;
+}
+.sessions-new-top .sessions-new .text {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.sessions-new-top .sessions-new .new-box {
+  width: 400px;
+  border: solid 1px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+}
+.sessions-new-top .sessions-new .new-box .field {
+  width: 400px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.sessions-new-top .sessions-new .new-box .field .text-label {
+  font-size: 20px;
+}
+.sessions-new-top .sessions-new .new-box .field .text-form {
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 1.5;
+  padding: 8px;
+}
+.sessions-new-top .sessions-new .new-box .submit-button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  margin-top: 70px;
+  background-color: rgb(49, 198, 49);
+  border: none;
+  color: white;
+}
+
+.regisrations-new-top {
+  background-color: rgb(240, 240, 240);
+}
+.regisrations-new-top .regisrations-new {
+  text-align: center;
+  height: 100%;
+  margin-top: 40px;
+}
+.regisrations-new-top .regisrations-new .text {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.regisrations-new-top .regisrations-new .new-box {
+  width: 400px;
+  border: solid 1px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+}
+.regisrations-new-top .regisrations-new .new-box .field {
+  width: 400px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.regisrations-new-top .regisrations-new .new-box .field .text-label {
+  font-size: 20px;
+}
+.regisrations-new-top .regisrations-new .new-box .field .text-form {
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 1.5;
+  padding: 8px;
+}
+.regisrations-new-top .regisrations-new .new-box .submit-button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  margin-top: 70px;
+  background-color: rgb(49, 198, 49);
+  border: none;
+  color: white;
+}
+
+.passwords-new-top {
+  background-color: rgb(240, 240, 240);
+}
+.passwords-new-top .passwords-new {
+  text-align: center;
+  height: 100%;
+  margin-top: 40px;
+}
+.passwords-new-top .passwords-new .text {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.passwords-new-top .passwords-new .new-box {
+  width: 400px;
+  border: solid 1px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+}
+.passwords-new-top .passwords-new .new-box .field {
+  width: 400px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.passwords-new-top .passwords-new .new-box .field .text-label {
+  font-size: 20px;
+}
+.passwords-new-top .passwords-new .new-box .field .text-form {
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 1.5;
+  padding: 8px;
+}
+.passwords-new-top .passwords-new .new-box .submit-button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  margin-top: 70px;
+  background-color: rgb(49, 198, 49);
+  border: none;
+  color: white;
+}
+
+.user-error .error-message {
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px auto;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  opacity: 1;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/*# sourceMappingURL=application.css.map */
